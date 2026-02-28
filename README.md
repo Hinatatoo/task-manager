@@ -108,17 +108,14 @@ fetch('/api/tasks', {
   })
 })
 ```
-🤝 贡献指南
+## 🤝 贡献指南
 欢迎提交Issue和Pull Request！
 
-📝 许可证
+## 📝 许可证
 MIT © 2026 Hinatatoo
 
-🙏 致谢
-Node.js
-
-Express
-
-SQLite
-
-Font Awesome
+## 🙏 致谢
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [SQLite](https://www.sqlite.org/)
+- [Font Awesome](https://fontawesome.com/)
