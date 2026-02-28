@@ -1,0 +1,10 @@
+node_modules/
+backend/node_modules/
+.env
+*.log
+backend/task.db
+backend/tasks.db
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

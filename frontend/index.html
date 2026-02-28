@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>简单任务管理器</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>
+                    <i class="fas fa-tasks"></i>
+                    我的任务管理器
+                </h1>
+                <p class="subtitle">简单高效的任务管理工具</p>
+            </header>
+            <div class="app-container">
+                <div class="add-task-section">
+                    <h2>
+                        <i class="fas fa-plus-circle"></i>
+                        添加新任务
+                    </h2>
+                    <div class="input-group">
+                        <input type="text" id="taskInput" placeholder="输入任务内容...">
+                        <select id="prioritySelect">
+                            <option value="low">低优先级</option>
+                            <option value="medium" selected>中优先级</option>
+                            <option value="high">高优先级</option>
+                        </select>
+                        <button id="addTaskBtn" class="btn-primary">
+                            <i class="fas fa-plus"></i> 添加任务
+                        </button>
+                    </div>
+                </div>
+                <div class="stats-section">
+                    <div class="stat-card">
+                        <h3>总任务数</h3>
+                        <p id="totalTasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>待完成</h3>
+                        <p id="pendingTasks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>已完成</h3>
+                        <p id="completedTasks">0</p>
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <div class="filter-btns">
+                        <button class="filter-btn active" data-filter="all">全部任务</button>
+                        <button class="filter-btn" data-filter="pending">待完成</button>
+                        <button class="filter-btn" data-filter="completed">已完成</button>
+                    </div>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="搜索任务...">
+                    </div>
+                </div>
+                <div class="tasks-section">
+                    <h2>
+                        <i class="fas fa-list-check"></i>
+                        任务列表
+                    </h2>
+                    <div id="tasksContainer">
+                        <div class="no-tasks" id="noTasksMessage">
+                            <i class="fas fa-clipboard-list"></i>
+                            <p>暂无任务,添加你的第一个任务吧!</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="loading" class="loading" style="display:none;">
+                    <i class="fas fa-spinner fa-spin"></i> 加载中...
+                </div>
+            </div>
+            <footer>
+                <p>简单任务管理器 © 2026 | 使用 Node.js + Express + SQLite 构建</p>
+            </footer>
+        </div>
+        <!-- ========== 模态框（弹窗）- 用于编辑任务详情 ========== -->
+        <!-- 初始时隐藏，点击编辑按钮时显示 -->
+        <div id="taskModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-modal">×</span>
+                <h2 id="modalTitle">任务详情</h2>
+                <!-- 模态框主体 - 编辑表单 -->
+                <div class="modal-body">
+                    <!-- 任务内容编辑区 -->
+                    <div class="form-group">
+                        <label for="editTaskText">任务内容:</label>
+                        <textarea id="editTaskText" rows="3"></textarea>
+                    </div>
+                    <!-- 优先级编辑区 -->
+                    <div class="form-group">
+                        <label for="editPriority">优先级:</label>
+                        <select id="editPriority">
+                            <option value="low">低优先级</option>
+                            <option value="medium">中优先级</option>
+                            <option value="high">高优先级</option>
+                        </select>
+                    </div>
+                    <!-- 完成状态复选框 -->
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="editCompleted"> 已完成
+                        </label>
+                    </div>
+                    <!-- 按钮组 -->
+                    <div class="modal-actions">
+                        <button id="saveTaskBtn" class="btn-primary">保存更改</button>
+                        <button id="deleteTaskBtn" class="btn-danger">删除任务</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
